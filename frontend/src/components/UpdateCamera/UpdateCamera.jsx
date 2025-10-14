@@ -3,6 +3,7 @@ import './UpdateCamera.css';
 import axios from 'axios';
 import { getUser } from '../../managers/authManager';
 import { logError } from '../../utils/logger';
+import { API_ENDPOINTS } from '../../Config/apiConfig';
 
 /**
  * UpdateCamera component for editing and updating camera information.
@@ -23,7 +24,7 @@ const UpdateCamera = ({ cameraUrl }) => {
       if (data.camera == null) {
         data.camera = cameraUrl;
       }
-      const url = "http://localhost:8080/api/cameras/update";
+      const url = API_ENDPOINTS.UPDATE_CAMERA;
       const { data: res } = await axios.post(url, data);
       
       window.location = "/cameras";
@@ -40,7 +41,7 @@ const UpdateCamera = ({ cameraUrl }) => {
       if (data.camera == null) {
         data.camera = cameraUrl;
       }
-      const url = "http://localhost:8080/api/cameras/remove";
+      const url = API_ENDPOINTS.REMOVE_CAMERA;
       const { data: res } = await axios.post(url, data);
       
       window.location = "/cameras";

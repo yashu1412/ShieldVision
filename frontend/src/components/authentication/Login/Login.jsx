@@ -4,6 +4,7 @@ import axios from 'axios';
 import SecurityImg from '../../../img/cyber-security.png'
 import Register from '../Register/Register';
 import { logMessage } from '../../../utils/logger';
+import { API_ENDPOINTS } from '../../../Config/apiConfig';
 
 /**
  * Represents a component for user login.
@@ -26,7 +27,7 @@ const Login = ({ setCurrentAuthTab }) => {
     // Function to submit the login form
     const submit = async () => {
         try {
-            const url = "http://localhost:8080/api/authentication/login";
+            const url = API_ENDPOINTS.LOGIN;
             logMessage("email to login: " + data.email);
             const { data: res } = await axios.post(url, data);
             localStorage.setItem("token", res.data);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AddCameraForm.css';
+import { API_ENDPOINTS } from '../../Config/apiConfig';
 import { getToken, getUser, getUserObject, removeTokenAndLogOut } from '../../managers/authManager';
 import { logError, logMessage } from '../../utils/logger';
 
@@ -15,7 +16,7 @@ const addCameraUrl = async (cameraUrl, userId, setErrorMessage) => {
     const userObject = await getUserObject();
     const token = getToken();
 
-    const response = await axios.post('http://localhost:8080/api/cameras/add', {
+    const response = await axios.post(API_ENDPOINTS.ADD_CAMERA, {
       userId: userId,
       camera: cameraUrl
     },

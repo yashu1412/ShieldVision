@@ -5,6 +5,7 @@ import SecurityCamera from '../../components/SecurityCamera/SecurityCamera';
 import SignOutButton from '../../components/authentication/LogOutButton/SignOutButton';
 import AddCameraForm from '../../components/AddCameraForm/AddCameraForm';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../../Config/apiConfig';
 import CloseIcon from '../../img/close.png';
 import UpdateCamera from '../../components/UpdateCamera/UpdateCamera';
 import { getUser } from '../../managers/authManager';
@@ -19,7 +20,7 @@ import { logError } from '../../utils/logger';
 const getAllCameras = async () => {
   try {
     const userId = getUser()._id;
-    const response = await axios.post('http://localhost:8080/api/cameras/get-cameras', { userId: userId });
+    const response = await axios.post(API_ENDPOINTS.GET_CAMERAS, { userId: userId });
     return response.data;
   } catch (error) {
     logError('Error fetching cameras: ' + error);

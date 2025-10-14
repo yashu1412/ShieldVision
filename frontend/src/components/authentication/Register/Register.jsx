@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Register.css'
 import axios from 'axios';
+import { API_ENDPOINTS } from '../../../Config/apiConfig';
 import Login from '../Login/Login'
 import SecurityImg from '../../../img/cyber-security.png'
 import { logMessage } from '../../../utils/logger';
@@ -35,7 +36,7 @@ const Register = ({ setCurrentAuthTab }) => {
      */
     const submit = async () => {
         try {
-            const url = "http://localhost:8080/api/register"
+            const url = API_ENDPOINTS.REGISTER;
             const { data: res } = await axios.post(url, data);
             loginAfterRegister();
             logMessage(res.message);
@@ -58,7 +59,7 @@ const Register = ({ setCurrentAuthTab }) => {
             password: data.password
         }
         try {
-            const url = "http://localhost:8080/api/authentication/login"
+            const url = API_ENDPOINTS.LOGIN;
             const { data: res } = await axios.post(url, loginData);
             localStorage.setItem("token", res.data);
             window.location = "/dashboard"

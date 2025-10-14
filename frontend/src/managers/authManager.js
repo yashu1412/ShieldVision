@@ -1,6 +1,7 @@
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
-import { logError } from '../utils/logger';
+import { logError, logMessage } from '../utils/logger';
+import { API_ENDPOINTS } from '../Config/apiConfig';
 
 /**
  * Get the JWT token from local storage.
@@ -58,7 +59,7 @@ export const getUserObject = async () => {
     };
 
     // Send a POST request to get user data
-    const response = await axios.post('http://localhost:8080/api/authentication/get-user', data, config);
+    const response = await axios.post(API_ENDPOINTS.GET_USER, data, config);
 
     if (response.status === 403) {
       // Handle a 403 status (Forbidden)
@@ -96,7 +97,7 @@ export const updateUser = async (userData) => {
     };
 
     // Send a POST request to update user data
-    const response = await axios.post('http://localhost:8080/api/authentication/update-user', userData, config);
+    const response = await axios.post(API_ENDPOINTS.UPDATE_USER, userData, config);
 
     if (response.status === 403) {
       // Handle a 403 status (Forbidden)
@@ -133,7 +134,7 @@ export const getAllUsers = async () => {
     };
 
     // Send a POST request to get all users
-    const response = await axios.post('http://localhost:8080/api/authentication/get-all-users', null, config);
+    const response = await axios.post(API_ENDPOINTS.GET_ALL_USERS, null, config);
 
     if (response.status === 403) {
       // Handle a 403 status (Forbidden)
@@ -172,7 +173,7 @@ export const deleteUser = async (userIdToDelete) => {
     };
 
     // Send a POST request to delete the user
-    const response = await axios.post('http://localhost:8080/api/authentication/test', { userIdToDelete: userIdToDelete }, config);
+    const response = await axios.post(API_ENDPOINTS.DELETE_USER, { userIdToDelete: userIdToDelete }, config);
     
     if (response.status === 403) {
       // Handle a 403 status (Forbidden)
