@@ -32,8 +32,7 @@ router.post("/", async (req, res) => {
         const newUser = new User({
             ...req.body,
             password: hashPassword,
-            isAdmin: isFirstUser,
-            subscriptionPackage: "Free" // Set isAdmin to true for the first user
+            isAdmin: isFirstUser
         });
 
         await newUser.save();

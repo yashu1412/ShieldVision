@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './AccountInfo.css';
 import ai from '../../img/ai.png';
 import { getUser, getUserObject } from '../../managers/authManager';
-import { getMaxAllowedCameras } from '../../utils/subscriptionUtil';
 import { logError } from '../../utils/logger';
 
 const AccountInfo = ({ style }) => {
@@ -21,8 +20,8 @@ const AccountInfo = ({ style }) => {
         // Get user object
         const user = await getUserObject();
 
-        // Get maximum allowed cameras based on subscription
-        user.maxCameras = await getMaxAllowedCameras(user.subscriptionPackage);
+        // Default max cameras no longer depends on subscription
+        user.maxCameras = user.cameras?.length ?? 0;
         setUser(user);
       } catch (error) {
         logError(error.message);
@@ -45,7 +44,6 @@ const AccountInfo = ({ style }) => {
         {/* User account information */}
         <p className='accountInfoLine'><strong>Cameras:</strong> {user.cameras.length}</p>
         <p className='accountInfoLine'><strong>Max Cameras:</strong> {user.maxCameras}</p>
-        <p className='accountInfoLine'><strong>Subscription:</strong> {user.subscriptionPackage}</p>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@
 }
 
 .form {
-    background-color: #FBFCFE;
+    background-color: var(--bg-elevated);
     border-radius: 20px;
     box-sizing: border-box;
     height: 100%;
@@ -21,7 +21,7 @@
   }
   
   .title {
-    color: black;
+    color: var(--text-primary);
     font-family: sans-serif;
     font-size: 36px;
     font-weight: 600;
@@ -29,7 +29,7 @@
   }
   
   .subtitle {
-    color: black;
+    color: var(--text-secondary);
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -49,8 +49,8 @@
     height: 40px;
     width: 100%;
     font: 400 0.9375rem/1.5rem Roboto,sans-serif;
-    color: #1d2026;
-    background-color: #f1f5fd;
+    color: var(--text-primary);
+    background-color: #18181b;
     border: 1.5px solid transparent;
     border-radius: 0.625rem;
     padding: 16px 22px;
@@ -68,7 +68,7 @@
   }
   
   .placeholder {
-    color: #65657b;
+    color: var(--text-secondary);
     font-family: sans-serif;
     left: 20px;
     line-height: 14px;
@@ -85,15 +85,15 @@
   }
   
   .input:not(:placeholder-shown) ~ .placeholder {
-    color: #808097;
+    color: var(--text-secondary);
   }
   
   .input:focus ~ .placeholder {
-    color: #dc2f55;
+    color: var(--brand);
   }
   
   .submit {
-    background: linear-gradient(90deg,#3371d9 0%,#66b3ff 100%);
+    background: linear-gradient(90deg, var(--brand), var(--brand-700));
     display: inline-block;
     position: relative;
     min-width: 9em;
@@ -111,7 +111,7 @@
     margin-top: 20px;
 }
   .submit:active {
-    background-color: #06b;
+    background-color: var(--brand-700);
   }
   
   .registerTab {

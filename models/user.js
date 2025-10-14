@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     cameras: { type: [String], required: false },
     isAdmin: { type: Boolean, required: false },
-    subscriptionPackage: { type: String, required: false },
 });
 
 // Add a custom method to the user schema for generating authentication tokens

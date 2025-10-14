@@ -22,6 +22,7 @@
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.0",
+    "nodemon": "^3.1.10",
     "path": "^0.12.7",
     "rtsp-relay": "^1.7.0"
   }

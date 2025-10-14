@@ -1,102 +1,166 @@
-# Remote Surveillance Dashboard
+# ShieldVision - RTSP Livestream with Custom Overlays
 
-The Remote Surveillance Dashboard is a web-based application that allows users to view real-time video streams from RTSP and HTTP cameras. It provides a user-friendly interface for monitoring multiple cameras remotely and offers features like camera management, AI-based detections, and user account management.
+ShieldVision is a full-stack web application that allows users to view livestream videos from RTSP URLs with the ability to add, manage, and customize overlays. The application provides a user-friendly interface for monitoring camera feeds and offers features like object detection, custom overlays, and user account management.
 
 ## Table of Contents
 
 - [Features](#features)
+- [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
+  - [Playing Livestreams](#playing-livestreams)
+  - [Managing Overlays](#managing-overlays)
+- [API Documentation](#api-documentation)
 - [License](#license)
 
 ## Features
 
-- **Camera Management**: Users can add, remove, and organize their cameras within the dashboard. It supports both RTSP and HTTP camera URLs.
+- **RTSP Livestream Playback**: View livestream videos from any RTSP URL source with basic playback controls (play, pause, volume).
 
-- **Real-time Video Streaming**: The dashboard provides real-time video streaming from connected cameras, allowing users to monitor their premises remotely.
+- **Custom Overlays**: Add, position, and resize custom overlays such as logos and text on top of the livestream.
 
-- **AI-Based Detections**: The application uses AI algorithms to detect potential security threats or anomalies in the camera feeds, providing alerts and notifications.
+- **Object Detection**: AI-powered object detection using YOLOv8 to identify and highlight objects in the video stream.
 
-- **User Authentication**: Secure user authentication and authorization system to ensure that only authorized users can access the surveillance dashboard.
+- **CRUD Operations for Overlays**: Create, read, update, and delete custom overlay settings through a RESTful API.
 
-- **User Account Management**: Users can update their account details, including profile information and password changes.
+- **User Authentication**: Secure user authentication and authorization system to ensure that only authorized users can access the dashboard.
 
-- **Subscription Plans**: The application offers various subscription plans with different camera limits, allowing users to choose the plan that suits their needs.
+- **Responsive Design**: The application is designed to be responsive and accessible on various devices, including desktops, tablets, and mobile phones.
 
-- **Responsive Design**: The dashboard is designed to be responsive and accessible on various devices, including desktops, tablets, and mobile phones.
+## Tech Stack
+
+- **Backend**: Python (Flask) for the server-side application and video processing
+- **Frontend**: React.js for the user interface
+- **Database**: MongoDB for storing user data and overlay settings
+- **Video Processing**: OpenCV and YOLOv8 for video stream handling and object detection
+- **Authentication**: JWT-based authentication system
 
 ## Getting Started
 
-Follow these instructions to set up and run the Remote Surveillance Dashboard locally on your development machine.
+Follow these instructions to set up and run ShieldVision locally on your development machine.
 
 ### Prerequisites
 
 Before you begin, make sure you have the following software installed:
 
 - [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) (Node Package Manager)
-- [React.js](https://react.com/) and [npm](https://www.npmjs.com/) (React JS)
-- [MongoDB](https://mongodb.com/) (as a local database)
+- [Python](https://www.python.org/) (3.8 or higher)
+- [MongoDB](https://www.mongodb.com/) (local or Atlas)
 - [Git](https://git-scm.com/) (for cloning the project repository)
 
 ### Installation
 
-1. Clone the project repository to your local machine using Git:
+1. **Clone the repository**
+   ```
+   git clone https://github.com/yourusername/shieldvision.git
+   cd shieldvision
+   ```
 
-2. Run - npm install in the main directory to install the node js dependencies.
+2. **Set up the backend**
+   ```
+   # Install Node.js dependencies
+   npm install
+   
+   # Install Python dependencies
+   pip install flask flask-cors ultralytics opencv-python
+   ```
 
-3. Run - npm start - to run the server
+3. **Set up the frontend**
+   ```
+   cd frontend
+   npm install --legacy-peer-deps
+   cd ..
+   ```
 
-4. Run - cd frontend
+4. **Configure MongoDB**
+   - Ensure MongoDB is running locally or update the connection string in `.env` file
+   - The default connection is `mongodb://localhost:27017/shieldvision`
 
-5. Run - npm i --legacy-peer-deps to install the react dependencies
+5. **Start the application**
+   ```
+   # Start the backend server
+   npm start
+   
+   # In a separate terminal, start the Python Flask server
+   python frontend/src/pages/Stream/Stream.py
+   
+   # In another terminal, start the React frontend
+   cd frontend
+   npm start
+   ```
 
-6. Run - npm start
+6. **Access the application**
+   - Open your browser and navigate to `http://localhost:3000/`
 
-7. Run - cd .. to go back to the main directory.
+## Usage
 
-8. Open your browser and navigate to http://localhost:3000/
+### Playing Livestreams
 
-### Notes:
+1. **Adding an RTSP Stream**
+   - Navigate to the Cameras page
+   - Click "Add Camera"
+   - Enter a name and the RTSP URL (e.g., rtsp://example.com/stream)
+   - Click "Save"
 
-As you can see in index.js there is also basic support to host the website
-as static files from express.
+2. **Viewing a Stream**
+   - Click on any camera from your dashboard
+   - The stream will load with object detection enabled
+   - Use the playback controls to play, pause, or adjust volume
 
-This is app is build to be hosted on two different servers though.
-One for the frontend and one for the backend which handles all the streaming
-and future object detection through yolov8 on local Tensor/GPU's
+3. **Testing with Sample RTSP Streams**
+   - You can use services like RTSP.me or RTSP Stream to create temporary streams
+   - Example: `rtsp://demo:demo@ipvmdemo.dyndns.org:5541/onvif-media/media.amp`
 
-Ofcourse because of a severe lack of funding :P this should just be run as two seperate instances for now.
+### Managing Overlays
 
-1. The backend with npm start
+1. **Creating an Overlay**
+   - While viewing a stream, click "Add Overlay"
+   - Choose the overlay type (text or image)
+   - Position and resize the overlay as needed
+   - Click "Save" to store your overlay settings
 
-2. The frontend with, cd frontend, npm start.
+2. **Editing Overlays**
+   - Select an existing overlay from the overlay panel
+   - Modify its properties (position, size, content)
+   - Click "Update" to save changes
 
-### Important
+3. **Deleting Overlays**
+   - Select the overlay you wish to remove
+   - Click the "Delete" button
+   - Confirm deletion when prompted
 
-Make sure to install react dependencies with: npm i --legacy-peer-deps
-Because some legacy dependencies are used!!
+## API Documentation
 
-Make sure you have mongodb installed and running on the following url:port
-mongodb://localhost:27017/ ( This should be the default port. )
+ShieldVision provides a RESTful API for managing overlays and stream settings.
 
-## Flow
+### Authentication Endpoints
 
-When a new user is registered and the database is still empty the new user will
-automatically be made an administrator.
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Authenticate a user and receive a JWT token
 
-This means the following:
+### Camera Endpoints
 
-1. For this specific user the admin panel will be visible in the side menu.
+- `GET /api/cameras` - Get all cameras for the authenticated user
+- `POST /api/cameras` - Add a new camera
+- `PUT /api/cameras/:id` - Update camera details
+- `DELETE /api/cameras/:id` - Delete a camera
 
-2. This user can remove users, change their roles, upgrade or downgrade their subscription.
+### Overlay Endpoints
 
-3. The admin user will automatically have 11 example camera streams added from unsecured cameras over the world ( for testing purposes only ).
+- `GET /api/overlays` - Get all overlays for a specific camera
+- `POST /api/overlays` - Create a new overlay
+- `PUT /api/overlays/:id` - Update an existing overlay
+- `DELETE /api/overlays/:id` - Delete an overlay
 
-## Payments - Subscription model
+### Stream Endpoints
+
+- `GET /video_feed?cameraUrl=<rtsp_url>` - Get video stream with object detection
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 This dashboard supports 4 different subscription models.
 

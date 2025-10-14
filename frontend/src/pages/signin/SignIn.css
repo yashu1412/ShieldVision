@@ -2,7 +2,9 @@
 
 .signIn {
     height: 100Vh;
-    background-color: #fff;
+    background: radial-gradient(1200px 800px at 70% -20%, rgba(229,9,20,0.12), transparent 60%),
+                radial-gradient(800px 600px at -10% 20%, rgba(229,9,20,0.06), transparent 60%),
+                var(--bg-primary);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,7 +36,7 @@
 
 #loginTitle {
     text-align: left;
-    color: black;
+    color: var(--text-primary);
     font-style: normal;
     font-variant-caps: normal;
     font-variant-ligatures: normal;
@@ -70,7 +72,7 @@
     font-size: 0.9375rem;
     line-height: 1.5rem;
     font-family: Roboto, sans-serif;
-    color: black;
+    color: var(--text-secondary);
 }
 
 #loginActionText {
@@ -90,7 +92,7 @@
     font-size: 0.9375rem;
     line-height: 1.5rem;
     font-family: Roboto, sans-serif;
-    color: black;
+    color: var(--text-primary);
     margin-top: -20px;
 }
 

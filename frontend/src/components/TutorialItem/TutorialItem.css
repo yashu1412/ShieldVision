@@ -30,7 +30,7 @@
     text-align: left;
     font-weight: bold;
     font-size: 1.0rem;
-    color: black;
+    color: rgb(246, 248, 248);
 }
 
 #tutorialText {
@@ -39,7 +39,7 @@
     line-height: 20px;
     margin-right: 70px;
     margin-top: -10px;
-    color: black;
+    color: rgb(136, 137, 137);
     min-width: 200px;
 }
 

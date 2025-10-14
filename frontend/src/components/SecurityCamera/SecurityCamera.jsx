@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { loadPlayer } from 'rtsp-relay/browser';
 import settingsIcon from '../../img/settings.png';
 import './SecurityCamera.css';
-import Poster from '../../img/upgrade.png';
 
 /**
  * SecurityCamera component for displaying a security camera stream.
@@ -12,6 +12,7 @@ import Poster from '../../img/upgrade.png';
  * @param {boolean} isPreview - Whether it's a camera preview.
  */
 const SecurityCamera = ({ cameraUrl, setCameraToEdit, index, isPreview }) => {
+  const navigate = useNavigate();
   // WebSocket stream URL for the camera
   const streamUrl = `ws://localhost:8080/api/stream/${encodeURIComponent(cameraUrl)}`;
 
@@ -55,13 +56,15 @@ const SecurityCamera = ({ cameraUrl, setCameraToEdit, index, isPreview }) => {
       )}
 
       {/* Canvas element for displaying the camera stream */}
-      <canvas className={index === 0 || cameraUrl.startsWith("http") ? 'hiddenCamera' : 'camera'} ref={canvas} />
+      <canvas onClick={() => navigate(`/stream/${encodeURIComponent(cameraUrl)}`)} className={index === 0 || cameraUrl.startsWith("http") ? 'hiddenCamera' : 'camera'} ref={canvas} />
 
       {/* Image element for displaying static images */}
-      <img ref={imageRef} src={cameraUrl} className={cameraUrl.startsWith("http") ? "camera" : "hiddenCamera"} alt="Camera" />
+      <img onClick={() => navigate(`/stream/${encodeURIComponent(cameraUrl)}`)} ref={imageRef} src={cameraUrl} className={cameraUrl.startsWith("http") ? "camera" : "hiddenCamera"} alt="Camera" />
 
-      {/* Show upgrade poster for non-preview cameras */}
-      <img onClick={() => window.location = "/smartvision"} src={Poster} className={index > 0 ? 'hidePoster' : 'showPoster'} alt="Upgrade" />
+      {/* View stream button */}
+      {!isPreview && (
+        <button onClick={() => navigate(`/stream/${encodeURIComponent(cameraUrl)}`)} className='btn-red' style={{ position: 'absolute', bottom: 8, right: 8 }}>View Stream</button>
+      )}
     </div>
   );
 }

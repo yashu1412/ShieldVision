@@ -5,7 +5,7 @@ import { getToken, getUser, getUserObject, removeTokenAndLogOut } from '../../ma
 import { logError, logMessage } from '../../utils/logger';
 
 /**
- * Adds a camera URL based on the user's subscription package.
+ * Adds a camera URL for the current user.
  * @param {string} cameraUrl - The camera URL to add.
  * @param {string} userId - The user's ID.
  * @param {function} setErrorMessage - Function to set error messages.
@@ -13,42 +13,6 @@ import { logError, logMessage } from '../../utils/logger';
 const addCameraUrl = async (cameraUrl, userId, setErrorMessage) => {
   try {
     const userObject = await getUserObject();
-    logMessage(userObject.subscriptionPackage);
-
-    // Check the user's subscription package and camera limit
-    switch (userObject.subscriptionPackage) {
-      case "Free":
-        if (userObject.cameras.length >= 3) {
-          setErrorMessage("Your subscription only supports up to 3 cameras");
-          window.location = "/smartvision";
-          logMessage("Your subscription only supports up to 3 cameras");
-          return;
-        }
-        break;
-    
-      case "Essential":
-        if (userObject.cameras.length >= 6) {
-          setErrorMessage("Your subscription only supports up to 6 cameras");
-          window.location = "/smartvision";
-          logMessage("Your subscription only supports up to 6 cameras");
-          return;
-        }
-        break;
-    
-      case "Professional":
-        if (userObject.cameras.length >= 12) {
-          setErrorMessage("Your subscription only supports up to 12 cameras");
-          logMessage("Your subscription only supports up to 12 cameras");
-          return;
-        }
-        break;
-    
-      default:
-        // Handle cases for other subscription packages
-       logMessage ("default state");
-        break;
-    }
-    
     const token = getToken();
 
     const response = await axios.post('http://localhost:8080/api/cameras/add', {

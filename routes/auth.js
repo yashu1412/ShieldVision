@@ -89,8 +89,7 @@ router.post('/update-user', authenticateToken, async (req, res) => {
         const userId = req.body.userId;
         const updatedUserData = {
             email: req.body.email,
-            isAdmin: req.body.isAdmin,
-            subscriptionPackage: req.body.subscriptionPackage
+            isAdmin: req.body.isAdmin
         };
 
         const updatedUser = await User.findOneAndUpdate(

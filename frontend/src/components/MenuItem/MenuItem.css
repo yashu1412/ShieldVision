@@ -12,14 +12,16 @@
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
+    transition: background-color var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
 }
 
 #menuItem:hover {
-  background-color:#76B3F9 ;
+  background: linear-gradient(90deg, rgba(229,9,20,0.12), rgba(178,7,16,0.06));
+  transform: translateX(6px);
 }
 
 .selected {
-    background-color:#76B3F9 ; 
+    background-color: rgba(255,255,255,0.08);
 }
 
 .link {
@@ -27,7 +29,7 @@
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    color: white;
+    color: var(--text-primary);
     text-decoration: none;
     width: 100%;
     font-weight:500;
@@ -40,7 +42,7 @@
 }
 
 #linkText {
-    color: white;
+    color: var(--text-primary);
     font-size: medium;
     text-align: left;    
     margin-bottom: auto;

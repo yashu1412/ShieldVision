@@ -4,15 +4,15 @@ import './App.css';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Services from './pages/services/Services';
-import Pricing from './pages/pricing/Pricing';
 import Contact from './pages/contact/Contact';
 import SignIn from './pages/signin/SignIn';
 import SignUp from './pages/signup/SignUp';
 import DashBoard from './pages/DashBoard/DashBoard';
 import Cameras from './pages/Cameras/Cameras';
-import SmartVision from './pages/SmartVision/SmartVision';
+// Removed SmartVision subscription page
 import Support from './pages/Support/Support';
-import Detections from './pages/Detections/Detections';
+// Detections removed
+import Stream from './pages/Stream/Stream';
 import Account from './pages/Account/Account';
 import Settings from './pages/Settings/Settings';
 import { getToken } from './managers/authManager';
@@ -39,7 +39,7 @@ function App() {
             **/}
           <Route path='/about' element={<About />} />
           <Route path='/services' element={<Services />} />
-          <Route path='/pricing' element={<Pricing />} />
+
           <Route path='/contact' element={<Contact />} />
 
           {/* Authentication routes */}
@@ -49,8 +49,9 @@ function App() {
           {/* Check if there is a user token before rendering these routes */}
           {user && <Route path='/dashboard' exact element={<DashBoard />} />}
           {user && <Route path='/cameras' exact element={<Cameras />} />}
-          {user && <Route path='/smartVision' exact element={<SmartVision />} />}
-          {user && <Route path='/detections' exact element={<Detections />} />}
+          {user && <Route path='/stream/:camera' exact element={<Stream />} />}
+          {/* SmartVision removed */}
+          {/* Detections removed */}
           {user && <Route path='/support' exact element={<Support />} />}
           {user && <Route path='/account' exact element={<Account />} />}
           {user && <Route path='/settings' exact element={<Settings />} />}
@@ -61,8 +62,9 @@ function App() {
           {/* TODO: implement 404 page */}
           <Route path='/dashboard' exact element={<Navigate replace to="/signin" />} />
           <Route path='/cameras' exact element={<Navigate replace to="/signin" />} />
-          <Route path='/smartVision' exact element={<Navigate replace to="/signin" />} />
-          <Route path='/detections' exact element={<Navigate replace to="/signin" />} />
+          <Route path='/stream/:camera' exact element={<Navigate replace to="/signin" />} />
+          {/* SmartVision removed */}
+          {/* Detections removed */}
           <Route path='/support' exact element={<Navigate replace to="/signin" />} />
           <Route path='/account' exact element={<Navigate replace to="/signin" />} />
           <Route path='/settings' exact element={<Navigate replace to="/signin" />} />

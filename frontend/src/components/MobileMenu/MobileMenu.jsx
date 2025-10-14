@@ -6,8 +6,6 @@ import Help from '../../img/help.png';
 import Settings from '../../img/settings.png';
 import Logo from '../../img/logo_white.png';
 import MenuItem from '../../components/MenuItem/MenuItem';
-import SmartVision from '../../img/smartVision.png';
-import Detections from '../../img/detections.png';
 import Account from '../../img/account.png';
 import Admin from '../../img/admin.png';
 import { useLocation } from 'react-router-dom';
@@ -47,8 +45,8 @@ const MobileMenu = ({ setMobileMenu }) => {
       <MenuItem title={'Dashboard'} icon={Menu} route={'dashboard'} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       <img className='line' src={Line} alt="Divider Line" />
       <MenuItem title={'Cameras'} icon={Camera} route={'cameras'} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      <MenuItem title={'SmartVision'} icon={SmartVision} route={'smartvision'} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      <MenuItem title={'Detections'} icon={Detections} route={'detections'} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      {/* SmartVision removed */}
+      {/* Detections removed */}
       <img className='line' src={Line} alt="Divider Line" />
       <MenuItem title={'Support'} icon={Help} route={'support'} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       <MenuItem title={'Account'} icon={Account} route={'account'} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />

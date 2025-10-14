@@ -63,15 +63,16 @@ const UpdateCamera = ({ cameraUrl }) => {
       <div className='inputContainer'>
         <label>Edit Camera Url</label>
         <input 
-          id="cameraUrl" 
-          className="input" 
-          type="text" 
-          placeholder="Camera Url"
-          name='updatedCamera'
-          onChange={handleChange}
-          value={data.updatedCamera}
-          required 
-        />
+  id="cameraUrl" 
+  className="input" 
+  type="text" 
+  placeholder="Camera Url"
+  name='updatedCamera'
+  onChange={handleChange}
+  value={data.updatedCamera || ''}
+  required 
+/>
+
       </div>
             
       <button onClick={() => submit()} type="text" className="submitButton">Update Camera</button>

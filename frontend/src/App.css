@@ -3,7 +3,7 @@
 
 .App {
   text-align: center;
-  background-color: #F0F5FA;
+  background-color: transparent;
 }
 
 .pageTitle {
@@ -14,8 +14,32 @@
 }
 
 .blackText {
-  color: black;
+  color: var(--text-primary);
   font-family: Roboto;
+}
+
+/* Page container animation helpers */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity var(--duration) var(--ease-in),
+              transform var(--duration) var(--ease-in);
 }
 
 

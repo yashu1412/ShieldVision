@@ -19,10 +19,10 @@
 
 .camera {
     filter: drop-shadow(30px 30px 30px rgba(0, 0, 0, 0.25));
-    background-color: #9d9c9c;
+    background-color: var(--bg-elevated);
     border-radius: 10px;
     box-sizing: border-box;   
-    background: linear-gradient(135.15deg, #404040 1.31%, #4E525B 96.87%);    
+    background: linear-gradient(135.15deg, rgba(229,9,20,0.12) 1.31%, rgba(178,7,16,0.06) 96.87%);
     grid-column: span 1;
     grid-row: span 1;
     height: 180px;
@@ -45,10 +45,10 @@
     
     .camera {
         filter: drop-shadow(30px 30px 30px rgba(0, 0, 0, 0.25));
-        background-color: #9d9c9c;
+        background-color: var(--bg-elevated);
         border-radius: 10px;
         box-sizing: border-box;   
-        background: linear-gradient(135.15deg, #404040 1.31%, #4E525B 96.87%);    
+        background: linear-gradient(135.15deg, rgba(229,9,20,0.12) 1.31%, rgba(178,7,16,0.06) 96.87%);
         grid-column: span 1;
         grid-row: span 9;
         height: 180px;
@@ -69,7 +69,7 @@
     width: 100%;
     height: 100%;
     top: 0;
-    background-color: rgba(205,217, 222, 0.9);
+    background-color: rgba(20,20,20, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;

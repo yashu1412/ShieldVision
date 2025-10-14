@@ -7,8 +7,6 @@ import TutorialItem from '../../components/TutorialItem/TutorialItem';
 import AccountInfo from '../../components/AccountInfo/AccountInfo';
 import AppPoster from '../../img/app_poster.png';
 import Camera from '../../img/camera.png';
-import SmartVision from '../../img/eye.png';
-import Detections from '../../img/eye-scanner.png';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react";
 import supportAnimation from '../../lottieAnimations/lottie-support.json';
@@ -46,8 +44,8 @@ const DashBoard = () => {
         <AccountInfo />
         {/* Render the ActionItem components */}
         <ActionItem icon={Camera} title={"Cameras"} text={"Add your own private cameras and start securing your environment with the latest technology."} linkText={"Add Camera"} link={'cameras'}/>
-        <ActionItem icon={SmartVision} title={"SmartVision"} text={"Customize your security system with specific AI detectors to fit your personal needs."} linkText={"Customize"} link={'smartvision'}/>
-        <ActionItem icon={Detections} title={"Detections"} text={"Get a quick overview of the latest detections in your privately secured environment."} linkText={"See Detections"} link={'detections'}/>
+        {/* SmartVision removed */}
+        {/* Detections removed */}
       
         <div className='item item6'>
           {/* Render a link to the support page with a Lottie animation */}

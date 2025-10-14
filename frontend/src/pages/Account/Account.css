@@ -10,7 +10,7 @@
     min-height: 260px;
     filter: drop-shadow(30px 30px 30px rgba(0, 0, 0, 0.25));
     padding: 30px;
-    background-color: #FCFCFE;
+    background-color: var(--bg-elevated);
     border-radius: 30px;
     box-sizing: border-box;   
 }
@@ -21,7 +21,7 @@
     min-height: 260px;
     filter: drop-shadow(30px 30px 30px rgba(0, 0, 0, 0.25));
     padding: 30px;
-    background-color: #FCFCFE;
+    background-color: var(--bg-elevated);
     border-radius: 30px;
     box-sizing: border-box;  
 }
@@ -96,7 +96,7 @@
     text-align: start;
     height: 25px;
     margin: 0;
-    color: black;
+    color: var(--brand);
   }
 
   #quickActionsTitle {
@@ -119,7 +119,7 @@
         min-height: 260px;
         filter: drop-shadow(30px 30px 30px rgba(0, 0, 0, 0.25));
         padding: 30px;
-        background-color: #FCFCFE;
+        background-color: var(--bg-elevated);
         border-radius: 30px;
         box-sizing: border-box;  
         margin-bottom: 70px;
@@ -132,7 +132,7 @@
         min-height: 260px;
         filter: drop-shadow(30px 30px 30px rgba(0, 0, 0, 0.25));
         padding: 30px;
-        background-color: #FCFCFE;
+        background-color: var(--bg-elevated);
         border-radius: 30px;
         box-sizing: border-box;  
         margin-bottom: 70px;

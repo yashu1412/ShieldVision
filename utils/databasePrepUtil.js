@@ -1,6 +1,4 @@
-const subscriptionPlansData = require('../data/basicdata/subscriptionplans.cjs');
 const exampleCameraData = require('../data/basicdata/examplecameras.cjs');
-const { SubscriptionPlan } = require('../models/subscriptionPlan');
 const { User } = require('../models/user');
 const { logMessage, logError } = require('./logger');
 
@@ -10,37 +8,9 @@ const { logMessage, logError } = require('./logger');
  */
 const addBaseData = async (userId) => {
     try {
-        await addSubscriptionPlans();
         await addTestCameras(userId);
     } catch (error) {
         console.error(error);
-    }
-}
-
-/**
- * Add subscription plans to the database if they don't already exist.
- */
-const addSubscriptionPlans = async () => {
-    try {
-        for (const planData of subscriptionPlansData) {
-            const { planId, subscriptionPackage } = planData;
-
-            // Check if a subscription plan with the same planId already exists
-            const existingPlan = await SubscriptionPlan.findOne({ planId });
-
-            if (!existingPlan) {
-                // Create a new SubscriptionPlan document and save it to the database
-                const subscriptionPlan = new SubscriptionPlan(planData);
-                logMessage("Adding plan: " + subscriptionPackage);
-                await subscriptionPlan.save();
-            } else {
-                logMessage(`Plan '${subscriptionPackage}' already exists. Skipping.`);
-            }
-        }
-
-        logMessage('Subscription plans inserted into the database.');
-    } catch (error) {
-        logError('Error inserting subscription plans:', error);
     }
 }
 

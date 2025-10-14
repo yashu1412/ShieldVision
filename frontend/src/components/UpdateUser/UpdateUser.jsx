@@ -12,7 +12,6 @@ const UpdateUser = ({ user }) => {
   const [data, setData] = useState({
     email: user.email,
     isAdmin: user.isAdmin,
-    subscriptionPackage: user.subscriptionPackage,
     userId: user._id,
   });
 
@@ -78,15 +77,7 @@ const UpdateUser = ({ user }) => {
           <option value={true}>Admin</option>
         </select>
       </div>
-      <div className='inputContainer'>
-        <label htmlFor='subscriptionPackage'>Subscription package:</label>
-        <select id='subscriptionPackage' name='subscriptionPackage' value={data.subscriptionPackage} onChange={handleChange}>
-          <option value={'Free'}>Free</option>
-          <option value={'Essential'}>Essential</option>
-          <option value={'Professional'}>Professional</option>
-          <option value={'Enterprise'}>Enterprise</option>
-        </select>
-      </div>
+      {/* Subscription package removed */}
 
       <button onClick={submit} type='button' className='submitButton'>
         Update User

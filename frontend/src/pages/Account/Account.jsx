@@ -127,12 +127,8 @@ const Account = () => {
           <Link className='actionLink' to={`/support`}>
             <p id='quickActionLinkText'>Go to support</p>
           </Link>
-          <Link className='actionLink' to={`/detections`}>
-            <p id='quickActionLinkText'>Latest detections</p>
-          </Link>
-          <Link className='actionLink' to={`/smartvision`}>
-            <p id='quickActionLinkText'>Upgrade subscription</p>
-          </Link>
+          {/* Detections removed */}
+          {/* SmartVision removed */}
         </div>
       </div>
     </div>

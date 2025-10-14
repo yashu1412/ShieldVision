@@ -38,7 +38,6 @@ const Cameras = () => {
 
   if (errorMessage != null) {
     alert(errorMessage);
-    window.location = "/smartvision";
   }
 
   useEffect(() => {

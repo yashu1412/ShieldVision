@@ -27,7 +27,7 @@ const Support = () => {
         <FaqItem question={"Is ShieldVision free to use?"} answer={"ShieldVision is free to use up to 3 cameras and 200 detections a day."} />
         <FaqItem question={"How to add a camera"} answer={"Go to the Cameras page and click on the 'Add Camera' button."} />
         <FaqItem question={"Where can I see my latest detections"} answer={"Go to the Detections page to see the latest detections."} />
-        <FaqItem question={"How to upgrade my account"} answer={"Go to the SmartVision tab to select a new subscription."} />
+        {/* Upgrade/subscription FAQ removed */}
       </div>
     </div>
   );
