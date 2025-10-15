@@ -31,9 +31,7 @@ const SignIn = () => {
         </p>
         <p id='loginActionText'>Get started for free now!</p>
         <div className='cameraContainer'>
-          {/* Render preview SecurityCamera components */}
-          <SecurityCamera isPreview={true} cameraUrl={"http://5.10.10.199:50000/cgi-bin/faststream.jpg?stream=half&fps=15&rand=COUNTER"} index={3} />
-          <SecurityCamera isPreview={true} cameraUrl={"http://194.90.125.12:80/webcapture.jpg?command=snap&channel=1?1694789447"} index={3} />
+
         </div>
       </div>
 
