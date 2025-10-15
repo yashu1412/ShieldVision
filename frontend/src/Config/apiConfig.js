@@ -4,7 +4,7 @@
  */
 
 // Backend base URL
-export const API_BASE_URL = 'https://reastream.onrender.com';
+export const API_BASE_URL = 'https://shieldvision-1.onrender.com/';
 
 // API endpoints
 export const API_ENDPOINTS = {
