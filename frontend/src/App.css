@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+
+.App {
+  text-align: center;
+  background-color: transparent;
+}
+
+.pageTitle {
+  position: absolute;
+  margin-left: 260px;
+  margin-top: 70px;
+  font-family: 'Roboto';
+}
+
+.blackText {
+  color: var(--text-primary);
+  font-family: Roboto;
+}
+
+/* Page container animation helpers */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity var(--duration) var(--ease-in),
+              transform var(--duration) var(--ease-in);
+}
+
+

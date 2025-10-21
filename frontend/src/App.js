@@ -1,0 +1,78 @@
+import React from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Home from './pages/home/Home';
+import About from './pages/about/About';
+import Services from './pages/services/Services';
+import Contact from './pages/contact/Contact';
+import SignIn from './pages/signin/SignIn';
+import SignUp from './pages/signup/SignUp';
+import DashBoard from './pages/DashBoard/DashBoard';
+import Cameras from './pages/Cameras/Cameras';
+// Removed SmartVision subscription page
+import Support from './pages/Support/Support';
+// Detections removed
+import Stream from './pages/Stream/Stream';
+import Account from './pages/Account/Account';
+import Settings from './pages/Settings/Settings';
+import { getToken } from './managers/authManager';
+import AdminPanel from './pages/AdminPanel/AdminPanel';
+
+function App() {
+  // Check if there is a user token
+  const user = getToken();
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          {/** 
+           * Yes the base path leads to the sign in page .
+           * After some research most dashboards saas apps do :)
+           * */}
+          <Route path='/' element={<SignIn />} />
+
+          {/* 
+            * Deprecated / currently not in use routes, due to lack of time.
+            * The same functionality/ui is implemented in a different way.
+            * In different/seperate components.
+            **/}
+          <Route path='/about' element={<About />} />
+          <Route path='/services' element={<Services />} />
+
+          <Route path='/contact' element={<Contact />} />
+
+          {/* Authentication routes */}
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} />
+
+          {/* Check if there is a user token before rendering these routes */}
+          {user && <Route path='/dashboard' exact element={<DashBoard />} />}
+          {user && <Route path='/cameras' exact element={<Cameras />} />}
+          {user && <Route path='/stream/:camera' exact element={<Stream />} />}
+          {/* SmartVision removed */}
+          {/* Detections removed */}
+          {user && <Route path='/support' exact element={<Support />} />}
+          {user && <Route path='/account' exact element={<Account />} />}
+          {user && <Route path='/settings' exact element={<Settings />} />}
+          {user && <Route path='/admin' exact element={<AdminPanel />} />}
+          
+          {/* Redirect to signin if there is no user token */}
+          {/* Bugfix -> no 404 page implemented yet, quick fix */}
+          {/* TODO: implement 404 page */}
+          <Route path='/dashboard' exact element={<Navigate replace to="/signin" />} />
+          <Route path='/cameras' exact element={<Navigate replace to="/signin" />} />
+          <Route path='/stream/:camera' exact element={<Navigate replace to="/signin" />} />
+          {/* SmartVision removed */}
+          {/* Detections removed */}
+          <Route path='/support' exact element={<Navigate replace to="/signin" />} />
+          <Route path='/account' exact element={<Navigate replace to="/signin" />} />
+          <Route path='/settings' exact element={<Navigate replace to="/signin" />} />
+          <Route path='/admin' exact element={<Navigate replace to="/signin" />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
