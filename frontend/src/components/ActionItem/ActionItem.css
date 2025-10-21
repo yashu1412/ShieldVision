@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+.actionIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.actionTitle {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.0rem;
+    color: var(--text-primary);
+}
+
+.actionText {
+    font-family: 'Roboto';
+    text-align: left;
+    font-size: 0.9rem;
+    line-height: 20px;
+    margin-top: -10px;
+    color: var(--text-secondary);
+}
+
+.actionItem {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2/3;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    border: 1px solid var(--stroke);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: var(--shadow-soft);
+    transform: translateZ(0);
+}
+
+.actionItem:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-strong);
+    background: radial-gradient(280px 180px at 80% -10%, rgba(229,9,20,0.18), transparent 60%),
+                var(--card-hover);
+}
+
+.actionLinkText {
+    position: fixed;
+    height: 25px;
+    text-decoration: none;
+    bottom: 20px;
+    right: 20px;
+    font-weight: bold;
+    font-size: small;
+    text-align: center;
+    height: 25px;
+    margin: 0;
+    color: var(--brand);
+}
