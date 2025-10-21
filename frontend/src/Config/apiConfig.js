@@ -4,7 +4,7 @@
  */
 
 // Backend base URL
-export const API_BASE_URL = 'https://shieldvision-1.onrender.com/';
+export const API_BASE_URL = 'https://shieldvision-1.onrender.com';
 
 // API endpoints
 export const API_ENDPOINTS = {
@@ -25,5 +25,6 @@ export const API_ENDPOINTS = {
   // Stream
   VIDEO_FEED: `${API_BASE_URL}/video_feed`,
 };
+
 
 export default API_ENDPOINTS;
